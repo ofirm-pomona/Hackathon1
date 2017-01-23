@@ -1,12 +1,42 @@
-*.class
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Sensitive or high-churn files:
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+## File-based project format:
+*.iws
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Gradle
+.gradle
+/build/
+.idea/gradle.xml
+.idea/libraries
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache

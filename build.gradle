@@ -26,5 +26,6 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile files("libs/aws-java-sdk-1.11.83.jar")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }

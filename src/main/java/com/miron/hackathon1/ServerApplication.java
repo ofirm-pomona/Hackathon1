@@ -15,7 +15,9 @@ public class ServerApplication implements CommandLineRunner {
 
 	// Called when application is started
 	public void run(String... args) throws Exception {
+        System.out.println("Server application started...");
+
 		// Run Local application
-		LocalApplication.main(args);
+        LocalApplication.main(args);
 	}
 }

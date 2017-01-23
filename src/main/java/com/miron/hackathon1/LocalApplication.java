@@ -1,5 +1,9 @@
 package com.miron.hackathon1;
 
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+
 import java.io.File;
 import java.nio.file.*;
 
@@ -8,12 +12,17 @@ import static java.nio.file.StandardWatchEventKinds.*;
 public class LocalApplication {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("Local application started...");
+
+        // Amazon SDK
+        AmazonS3 s3client = new AmazonS3Client(new ProfileCredentialsProvider());
+
         // Create new Dropbox folder
-        new File("/home/ec2-user/dropbox").mkdir();
+        new File("C:\\Users\\OMiro\\Downloads").mkdir();
 
         // Watch file changes
         WatchService watcher = FileSystems.getDefault().newWatchService();
-        Path dir = Paths.get("/home/ec2-user/dropbox");
+        Path dir = Paths.get("C:\\Users\\OMiro\\Downloads");
         dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
 
         while (true) {

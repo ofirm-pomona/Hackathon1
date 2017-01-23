@@ -1,13 +1,11 @@
 package com.miron.hackathon1;
 
 import com.amazonaws.ClientConfiguration;
-import com.amazonaws.Protocol;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 
 import java.io.File;
 import java.nio.file.*;
@@ -25,11 +23,13 @@ public class LocalApplication {
         AmazonS3 s3client = new AmazonS3Client(credentials, clientConfig);
 
         // Create new Dropbox folder
-        new File("C:\\Users\\OMiro\\Downloads\\Dropbox").mkdir();
+        String directoryPath = "C:\\Users\\OMiro\\Downloads\\Dropbox";
+        File directory = new File(directoryPath);
+        directory.mkdir();
 
         // Watch file changes
         WatchService watcher = FileSystems.getDefault().newWatchService();
-        Path dir = Paths.get("C:\\Users\\OMiro\\Downloads\\Dropbox");
+        Path dir = Paths.get(directoryPath);
         dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
 
         while (true) {
@@ -56,19 +56,14 @@ public class LocalApplication {
                     continue;
                 }
                 else if (kind == ENTRY_CREATE) {
-                    File file = new File(fileName.toFile().getAbsolutePath());
-                    System.out.println("File: " + file + ", exists? " + file.exists());
-//                    s3client.putObject("hackathon1-cs499", fileName.toString(), new File(fileName.toFile().getAbsolutePath()));
-                    System.out.println("Created");
+                    s3client.putObject("hackathon1-cs499", fileName.toString(), new File(directory + File.separator + fileName.toString()));
                 }
                 else if (kind == ENTRY_DELETE) {
                     s3client.deleteObject(new DeleteObjectRequest("hackathon1-cs499", fileName.toString()));
-                    System.out.println("Deleted");
                 }
                 else if (kind == ENTRY_MODIFY) {
-//                    s3client.deleteObject(new DeleteObjectRequest("hackathon1-cs499", fileName.toString()));
-                    s3client.putObject("hackathon1-cs499", fileName.toString(), new File(fileName.toFile().getAbsolutePath()));
-                    System.out.println("Modified");
+                    s3client.deleteObject(new DeleteObjectRequest("hackathon1-cs499", fileName.toString()));
+                    s3client.putObject("hackathon1-cs499", fileName.toString(), new File(directory + File.separator + fileName.toString()));
                 }
             }
 

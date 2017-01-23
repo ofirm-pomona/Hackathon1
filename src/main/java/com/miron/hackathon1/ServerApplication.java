@@ -5,16 +5,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class ServerApplication implements CommandLineRunner {
 
 	// Main
 	public static void main(String[] args) throws Exception {
-		// Run Spring Boot
-		SpringApplication.run(Application.class, args);
+		// Run Spring Boot application
+		SpringApplication.run(ServerApplication.class, args);
 	}
 
 	// Called when application is started
 	public void run(String... args) throws Exception {
-
+		// Run Local application
+		LocalApplication.main(args);
 	}
 }

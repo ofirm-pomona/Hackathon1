@@ -14,7 +14,7 @@ import static java.nio.file.StandardWatchEventKinds.*;
 
 public class LocalApplication {
 
-    public static void main(String[] args) throws Exception {
+    public void start() throws Exception {
         System.out.println("Local application started...");
 
         // Amazon SDK

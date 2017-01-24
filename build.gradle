@@ -16,7 +16,7 @@ buildscript {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.miron.hackathon1.Application'
+        attributes 'Main-Class': 'com.miron.hackathon1.ServerApplication'
     }
 }
 

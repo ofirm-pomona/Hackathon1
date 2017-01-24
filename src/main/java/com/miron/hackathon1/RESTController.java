@@ -24,7 +24,7 @@ public class RESTController {
     List<S3Object> list() {
         List<S3Object> s3Objects = new ArrayList<>();
 
-        AWSCredentials credentials = new BasicAWSCredentials("AKIAI4W42W4AAW7GAO3A", "HSc/9FnJRP1O2P5SSnQ1oqn7l32zTYEc2YkbGBLs");
+        AWSCredentials credentials = new BasicAWSCredentials("XXX", "XXX");
         ClientConfiguration clientConfig = new ClientConfiguration();
         AmazonS3 s3client = new AmazonS3Client(credentials, clientConfig);
 

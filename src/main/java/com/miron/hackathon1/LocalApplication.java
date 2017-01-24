@@ -18,7 +18,7 @@ public class LocalApplication {
         System.out.println("Local application started...");
 
         // Amazon SDK
-        AWSCredentials credentials = new BasicAWSCredentials("XXX", "XXX");
+        AWSCredentials credentials = new BasicAWSCredentials("AKIAI4W42W4AAW7GAO3A", "HSc/9FnJRP1O2P5SSnQ1oqn7l32zTYEc2YkbGBLs");
         ClientConfiguration clientConfig = new ClientConfiguration();
         AmazonS3 s3client = new AmazonS3Client(credentials, clientConfig);
 
